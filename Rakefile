@@ -16,10 +16,14 @@ module DotfilesHelpers
   def link_file from, to
     dest = File.expand_path to
     if File.exists? dest
-      puts "File #{dest} already exists" # TODO add overwrite logic by user request
-    else
-      ln_s File.expand_path("../#{from}", __FILE__), dest
+      if ENV["rewrite"] == "true"
+        sh "rm -rf #{dest}"
+      else
+        puts "File #{dest} already exists"
+        return
+      end
     end
+    ln_s File.expand_path("../#{from}", __FILE__), dest
   end
 
   def source to, path
