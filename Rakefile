@@ -87,7 +87,7 @@ task :default
 dotfile_task :bash do
   source "sources/bash", "git://github.com/nikitug/bash-settings.git"
   link_file "sources/bash", "~/.bash"
-  bashrc_line = ". #{File.expand_path("sources/bash/auto.sh")}" # TODO add install to bash-settings
+  bashrc_line = ". #{File.expand_path("sources/bash/auto.sh")}" # TODO add install.sh to bash-settings
   unless `cat ~/.bashrc` =~ /#{bashrc_line}/
     sh "echo \"#{bashrc_line}\" >> ~/.bashrc"
   end
@@ -111,6 +111,14 @@ dotfile_task :git do
   end
   generate "sources/gitconfig", "gitconfig.erb", binding
   link_file "sources/gitconfig", "~/.gitconfig"
+end
+
+dotfile_task "gnome-terminal" do
+  dir = File.expand_path "~/.gconf/apps/gnome-terminal/profiles/Default"
+  unless File.exists? dir
+    sh "mkdir -p #{dir}"
+  end
+  link_file "gnome-terminal", File.join(dir, "%gconf.xml")
 end
 
 %w[byobu mc].each do |file|
