@@ -10,25 +10,26 @@ module DotfilesHelpers
 
   def source to, path
     dest = File.expand_path to
+    namespace dest do
+      file dest => "sources" do
+        if path =~ /git$/
+          sh "git clone #{path} #{to}"
+          Dir.chdir dest do
+            sh "git submodule init"
+          end
+        end
+      end
 
-    file dest => "sources" do
-      if path =~ /git$/
-        sh "git clone #{path} #{to}"
-        Dir.chdir dest do
-          sh "git submodule init"
+      task :pull => dest do
+        if path =~ /git$/
+          Dir.chdir dest do
+            sh "git pull"
+            sh "git submodule update"
+          end
         end
       end
     end
-
-    task :pull => dest do
-      if path =~ /git$/
-        Dir.chdir dest do
-          sh "git pull"
-          sh "git submodule update"
-        end
-      end
-    end.
-    invoke
+    Rake::Task["#{dest}:pull"].invoke
   end
 
   directory "sources"
@@ -69,19 +70,20 @@ include DotfilesHelpers
 
 task :default
 
-dotfile_task :vim do
-  source "sources/vim", "git://github.com/nikitug/janus.git"
-  install "sources/vim", "rake link_vimrc"
-  link_file "vimrc", "~/tmp/.vimrc.local"
-  link_file "gvimrc", "~/tmp/.gvimrc.local"
-end
-
 dotfile_task :bash do
   source "sources/bash", "git://github.com/nikitug/bash-settings.git"
   bashrc_line = ". #{File.expand_path("sources/bash/auto.sh")}" # TODO add install to bash-settings
   unless `cat ~/.bashrc` =~ /#{bashrc_line}/
     sh "echo \"#{bashrc_line}\" >> ~/.bashrc"
   end
+end
+
+dotfile_task :vim do
+  source "sources/vim", "git://github.com/nikitug/janus.git"
+  link_file "sources/vim", "~/.vim"
+  install "sources/vim", "rake"
+  link_file "vimrc", "~/.vimrc.local"
+  link_file "gvimrc", "~/.gvimrc.local"
 end
 
 dotfile_task :byobu do link_file "byobu", "~/.byobu" end
