@@ -88,6 +88,14 @@ include DotfilesHelpers
 
 task :default
 
+desc "Pull the latest"
+task :pull do
+  sh "git pull"
+end
+
+desc "Update repo"
+task :update => [:pull, :default]
+
 dotfile_task :bash do
   source "sources/bash", "git://github.com/nikitug/bash-settings.git"
   link_file "sources/bash", "~/.bash"
