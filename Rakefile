@@ -1,4 +1,18 @@
+require 'rake'
+require 'erb'
+
 module DotfilesHelpers
+  def generate to, source, bnd = nil
+    if source =~ /\.erb$/
+      puts "Generating #{source}"
+      File.open File.expand_path(to), "w" do |file|
+        file.write ERB.new(File.read source).result(bnd)
+      end
+    else
+      raise ArgumentError, "Only *.erb files supported"
+    end
+  end
+
   def link_file from, to
     dest = File.expand_path to
     if File.exists? dest
@@ -72,6 +86,7 @@ task :default
 
 dotfile_task :bash do
   source "sources/bash", "git://github.com/nikitug/bash-settings.git"
+  link_file "sources/bash", "~/.bash"
   bashrc_line = ". #{File.expand_path("sources/bash/auto.sh")}" # TODO add install to bash-settings
   unless `cat ~/.bashrc` =~ /#{bashrc_line}/
     sh "echo \"#{bashrc_line}\" >> ~/.bashrc"
@@ -86,7 +101,21 @@ dotfile_task :vim do
   link_file "gvimrc", "~/.gvimrc.local"
 end
 
-dotfile_task :byobu do link_file "byobu", "~/.byobu" end
-dotfile_task :git   do link_file "gitconfig", "~/.gitconfig" end
-dotfile_task :mc    do link_file "mc", "~/.mc" end
+dotfile_task :git do
+  gitconfig = File.expand_path "~/.gitconfig"
+  if File.exists? gitconfig
+    if m = /\[github\]\s+user\s*=\s*(?<name>[a-z0-9_-]+)\s+token\s*=\s*(?<token>[a-z0-9]+)/.match(`cat #{gitconfig}`)
+      name = m[:name]
+      token = m[:token]
+    end
+  end
+  generate "sources/gitconfig", "gitconfig.erb", binding
+  link_file "sources/gitconfig", "~/.gitconfig"
+end
+
+%w[byobu mc].each do |file|
+  dotfile_task file do
+    link_file file, "~/.#{file}"
+  end
+end
 

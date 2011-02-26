@@ -1,0 +1,30 @@
+[user]
+    name = Nikita Afanasenko
+    email = nikita@afanasenko.name
+[github]
+    user = <%= print "github username: "; STDOUT.flush; puts (name ||= STDIN.gets.chomp); name %>
+    token = <%= print "github token: "; STDOUT.flush; puts (token ||= STDIN.gets.chomp); token %>
+
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    lg = log --stat --summary
+    lgp = log -p
