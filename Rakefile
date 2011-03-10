@@ -126,10 +126,8 @@ dotfile_task :git do
 end
 
 dotfile_task "gnome-terminal" do
-  dir = File.expand_path "~/.gconf/apps/gnome-terminal/profiles/Default"
-  unless File.exists? dir
-    sh "mkdir -p #{dir}"
-  end
+  dir = File.expand_path "~/.gconf/apps/gnome-terminal/profiles/LessDark"
+  sh "mkdir -p #{dir}" unless File.exists? dir
   link_file "gnome-terminal", File.join(dir, "%gconf.xml")
 end
 
