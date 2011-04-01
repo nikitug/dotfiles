@@ -106,7 +106,7 @@ dotfile_task :bash do
 end
 
 dotfile_task :vim do
-  source "sources/vim", "git://github.com/nikitug/janus.git"
+  source "sources/vim", "git://github.com/carlhuda/janus.git"
   link_file "sources/vim", "~/.vim"
   install "sources/vim", "rake"
   link_file "vimrc", "~/.vimrc.local"
