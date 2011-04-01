@@ -23,3 +23,6 @@ set gtl=%t gtt=%F
 " Color
 color twilight
 
+" Capfile is Ruby
+au BufRead,BufNewFile {Capfile} set ft=ruby
+
