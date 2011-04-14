@@ -26,3 +26,6 @@ color twilight
 " Capfile is Ruby
 au BufRead,BufNewFile {Capfile} set ft=ruby
 
+set shell=bash
+set shellcmdflag=-ic
+
