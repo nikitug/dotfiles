@@ -103,6 +103,9 @@ dotfile_task :bash do
   unless `cat ~/.bashrc` =~ /#{bashrc_line}/
     sh "echo \"#{bashrc_line}\" >> ~/.bashrc"
   end
+  unless File.exists?("~/.bash_profile")
+    sh "echo 'if [ -f ~/.bashrc ]; then . ~/.bashrc; fi' > ~/.bash_profile"
+  end
 end
 
 dotfile_task :vim do
@@ -132,7 +135,12 @@ dotfile_task "gnome-terminal" do
   link_file "gnome-terminal", File.join(dir, "%gconf.xml")
 end
 
-%w[byobu mc tmux.conf].each do |file|
+dotfile_task :tmux do
+  link_file "tmux", "~/.tmux"
+  link_file "tmux/tmux.conf", "~/.tmux.conf"
+end
+
+%w[byobu mc].each do |file|
   dotfile_task file do
     link_file file, "~/.#{file}"
   end
