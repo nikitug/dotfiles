@@ -106,6 +106,7 @@ dotfile_task :bash do
 end
 
 dotfile_task :vim do
+  link_file "janus.rake", "~/.janus.rake"
   source "sources/vim", "git://github.com/carlhuda/janus.git"
   link_file "sources/vim", "~/.vim"
   install "sources/vim", "rake"
