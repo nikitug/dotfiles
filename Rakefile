@@ -132,7 +132,7 @@ dotfile_task "gnome-terminal" do
   link_file "gnome-terminal", File.join(dir, "%gconf.xml")
 end
 
-%w[byobu mc].each do |file|
+%w[byobu mc tmux.conf].each do |file|
   dotfile_task file do
     link_file file, "~/.#{file}"
   end
