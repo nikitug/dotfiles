@@ -144,5 +144,5 @@ end
   end
 end
 
-task :server => [:bash, :vim, :git, :byobu, :mc]
+task :server => [:bash, :vim, :git, :byobu, :mc, :tmux]
 
