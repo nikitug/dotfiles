@@ -8,8 +8,8 @@ au BufNewFile,BufRead todo, TODO setfiletype task
 au FileType php set tabstop=4 textwidth=79
 
 " Map keys
-au FileType task inoremap <silent> <buffer> <C-CR> <ESC>:call Toggle_task_status()<CR>i
-au FileType task noremap <silent> <buffer> <C-CR> :call Toggle_task_status()<CR>
+au FileType task inoremap <silent> <buffer> <C-d> <ESC>:call Toggle_task_status()<CR>i
+au FileType task noremap <silent> <buffer> <C-d> :call Toggle_task_status()<CR>
 
 vmap > >gv
 vmap < <gv
