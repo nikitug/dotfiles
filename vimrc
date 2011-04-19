@@ -6,6 +6,7 @@ color wombat256
 au BufRead,BufNewFile Capfile setfiletype ruby
 au BufNewFile,BufRead todo, TODO setfiletype task
 au FileType php set tabstop=4 textwidth=79
+au FileType task set autoindent
 
 " Map keys
 au FileType task inoremap <silent> <buffer> <C-d> <ESC>:call Toggle_task_status()<CR>i
