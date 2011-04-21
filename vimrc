@@ -5,7 +5,8 @@ color wombat256
 " Filetypes
 au BufRead,BufNewFile Capfile setfiletype ruby
 au BufNewFile,BufRead todo, TODO setfiletype task
-au FileType php set tabstop=4 textwidth=79
+au BufNewFile,BufRead *.php setfiletype php
+au FileType php set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
 
 " Map keys
 au FileType task inoremap <silent> <buffer> <C-d> <ESC>:call Toggle_task_status()<CR>i
