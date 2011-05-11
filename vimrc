@@ -5,6 +5,7 @@ color wombat256
 " Filetypes
 au BufRead,BufNewFile Capfile setfiletype ruby
 au BufNewFile,BufRead todo, TODO setfiletype task
+au FileType task set autoindent
 au BufNewFile,BufRead *.php setfiletype php
 au FileType php set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
 
