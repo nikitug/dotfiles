@@ -30,6 +30,8 @@ map <A-[> <ESC>V<<ESC>
 
 nmap <C-k> [e
 nmap <C-j> ]e
+vmap <C-h> xhPgvohoh
+vmap <C-l> xlPgvolol
 vmap <C-k> [egv
 vmap <C-j> ]egv
 
