@@ -36,6 +36,8 @@ vmap <C-l> xlPgvolol
 vmap <C-k> [egv
 vmap <C-j> ]egv
 
+map <Leader>wr :%s/\s*$//<CR>|noh<CR>
+
 " Switch tabs
 map  <A-0> 0gt
 imap <A-0> <Esc>0gt
