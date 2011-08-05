@@ -21,8 +21,8 @@ map <Leader>tm :call StartViewportTerm()<CR>
 map <C-F> :Ack<space>
 imap <C-F> <ESC>:Ack<space>
 
-imap <Leader>t :CommandT<CR>
-imap <Leader>b <Esc>:CommandT<CR>
+imap <Leader>t <ESC>:CommandT<CR>
+imap <Leader>b <Esc>:CommandTBuffer<CR>
 
 imap <A-]> <ESC>V><ESC>
 map <A-]> <ESC>V><ESC>
@@ -36,7 +36,7 @@ vmap <C-l> xlPgvolol
 vmap <C-k> [egv
 vmap <C-j> ]egv
 
-map <Leader>wr :%s/\s*$//<CR>|noh<CR>
+map <Leader>wr :%s/\s*$//\|noh<CR>
 
 " Switch tabs
 map  <A-0> 0gt
