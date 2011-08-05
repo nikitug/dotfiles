@@ -2,6 +2,8 @@ require 'rake'
 require 'erb'
 
 module DotfilesHelpers
+  include Rake::DSL
+
   def generate to, source, bnd = nil
     if source =~ /\.erb$/
       puts "Generating #{source}"
@@ -51,7 +53,7 @@ module DotfilesHelpers
   end
 
   directory "sources"
-  def install source, cmd = nil
+  def install_source source, cmd = nil
     dir = File.expand_path source
     Dir.chdir dir do
       if cmd
@@ -110,7 +112,7 @@ dotfile_task :vim do
   link_file "janus.rake", "~/.janus.rake"
   source "sources/vim", "git://github.com/carlhuda/janus.git"
   link_file "sources/vim", "~/.vim"
-  install "sources/vim", "rake"
+  install_source "sources/vim", "rake"
   link_file "vimrc", "~/.vimrc.local"
   link_file "gvimrc", "~/.gvimrc.local"
 end
