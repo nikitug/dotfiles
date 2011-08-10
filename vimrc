@@ -36,7 +36,7 @@ vmap <C-l> xlPgvolol
 vmap <C-k> [egv
 vmap <C-j> ]egv
 
-map <Leader>wr :%s/\s*$//\|noh<CR>
+map <Leader>wr :%s/\s*$//<CR>:noh<CR>
 
 " Switch tabs
 map  <A-0> 0gt
@@ -68,3 +68,24 @@ function! StartViewportTerm()
   setlocal listchars=tab:\ \ 
 endfunction
 
+" <F8> File encoding for open
+" ucs-2le - MS Windows unicode encoding
+map <F8> :execute RotateEnc()<CR>
+" vmap <F8><C-C><F8>
+" imap <F8><C-O><F8>
+let b:encindex=0
+function! RotateEnc()
+  let y = -1
+  while y == -1
+    let encstring = "#cp1251#utf-8#"
+    let x = match(encstring,"#",b:encindex)
+    let y = match(encstring,"#",x+1)
+    let b:encindex = x+1
+    if y == -1
+      let b:encindex = 0
+    else
+      let str = strpart(encstring,x+1,y-x-1)
+      return ":e ++enc=".str
+    endif
+  endwhile
+endfunction
