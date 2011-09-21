@@ -16,6 +16,8 @@ au FileType task noremap <silent> <buffer> <C-d> :call Toggle_task_status()<CR>
 vmap > >gv
 vmap < <gv
 
+map <Leader>w :noh<cr>
+
 map <Leader>tm :call StartViewportTerm()<CR>
 
 map <C-F> :Ack<space>
@@ -65,7 +67,7 @@ imap <A-9> <Esc>9gt
 function! StartViewportTerm()
   :bo10sp
   execute 'ConqueTerm ' . $SHELL . ' -i'
-  setlocal listchars=tab:\ \ 
+  setlocal listchars=tab:\ \
 endfunction
 
 " <F8> File encoding for open
