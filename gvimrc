@@ -7,6 +7,8 @@ elseif has("x11")
 elseif has("gui_win32")
 end
 
+set guioptions=ai
+
 set anti " Antialias font
 
 " Default size of window
