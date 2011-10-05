@@ -13,6 +13,9 @@ au FileType php set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
 au FileType task inoremap <silent> <buffer> <C-d> <ESC>:call Toggle_task_status()<CR>i
 au FileType task noremap <silent> <buffer> <C-d> :call Toggle_task_status()<CR>
 
+" Folding
+:map + v%zf
+
 vmap > >gv
 vmap < <gv
 
