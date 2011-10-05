@@ -19,7 +19,8 @@ au FileType task noremap <silent> <buffer> <C-d> :call Toggle_task_status()<CR>
 vmap > >gv
 vmap < <gv
 
-map <Leader>w :noh<cr>
+map <F2> :noh<CR>
+map <F3> :set nowrap!<CR>
 
 map <Leader>tm :call StartViewportTerm()<CR>
 
