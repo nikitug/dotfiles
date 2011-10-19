@@ -140,15 +140,10 @@ dotfile_task :tmux do
   link_file "tmux/tmux.conf", "~/.tmux.conf"
 end
 
-dotfile_task :gem do
-  link_file "gemrc", "~/.gemrc"
-end
-
-%w[byobu mc].each do |file|
+%w[byobu mc gemrc].each do |file|
   dotfile_task file do
     link_file file, "~/.#{file}"
   end
 end
 
 task :server => [:bash, :vim, :git, :byobu, :mc, :tmux]
-
