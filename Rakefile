@@ -141,7 +141,7 @@ dotfile_task :tmux do
 end
 
 dotfile_task :gem do
-  link_file ".gemrc", "~/.gemrc"
+  link_file "gemrc", "~/.gemrc"
 end
 
 %w[byobu mc].each do |file|
