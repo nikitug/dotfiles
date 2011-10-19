@@ -19,7 +19,7 @@ module DotfilesHelpers
     dest = File.expand_path to
     if File.exists? dest
       if ENV["rewrite"] == "true"
-        sh "rm -rf #{dest}"
+        sh "mv #{dest} #{dest}.bak"
       else
         puts "File #{dest} already exists"
         return
