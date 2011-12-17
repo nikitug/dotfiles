@@ -147,3 +147,4 @@ end
 end
 
 task :server => [:bash, :vim, :git, :byobu, :mc, :tmux]
+task :mac => [:vim, :git, :tmux]
