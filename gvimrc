@@ -12,8 +12,8 @@ set guioptions=ai
 set anti " Antialias font
 
 " Default size of window
-set columns=179
-set lines=50
+set columns=119
+set lines=40
 
 " Color
 color twilight
@@ -21,6 +21,8 @@ color twilight
 " Load bash init file
 set shell=/bin/bash
 set shellcmdflag=-ic
+
+map <Leader>sv :so $MYGVIMRC<CR>
 
 " TODO move this code to separate file
 "if filereadable(expand("./vim/tabheadings.vim"))

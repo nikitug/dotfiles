@@ -88,7 +88,7 @@ auto_save_setup_panels=1
 
 [Layout]
 equal_split=1
-first_panel_size=78
+first_panel_size=79
 message_visible=1
 keybar_visible=1
 xterm_title=1
@@ -114,13 +114,15 @@ color_terminals=
 
 xterm=
 
-[Panelize]
-Find *.orig after patching=find . -name \\*.orig -print
-Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm +011 \\) -o \\( -perm -02000 -a -perm +01 \\) \\) -print
-Find rejects after patching=find . -name \\*.rej -print
+screen=
 
 [HotlistConfig]
 expanded_view_of_groups=0
 
 [terminal:xterm]
 complete=\\e[Z
+
+[Panelize]
+Find *.orig after patching=find . -name \\*.orig -print
+Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm +011 \\) -o \\( -perm -02000 -a -perm +01 \\) \\) -print
+Find rejects after patching=find . -name \\*.rej -print

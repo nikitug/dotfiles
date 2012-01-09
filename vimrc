@@ -1,3 +1,17 @@
+"set hidden " hide buffers
+
+set history=1000 " remember more commands and search history
+set undolevels=1000 " use many muchos levels of undo
+
+set nobackup
+set noswapfile
+
+set pastetoggle=<F4>
+
+" nnoremap ; :
+
+cmap w!! w !sudo tee % >/dev/null
+
 " Colors
 set t_Co=256
 color wombat256
@@ -7,14 +21,15 @@ au BufRead,BufNewFile Capfile setfiletype ruby
 au BufNewFile,BufRead todo, TODO setfiletype task
 au FileType task set autoindent
 au BufNewFile,BufRead *.php setfiletype php
-au FileType php set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
+au FileType php set tabstop=4 softtabstop=4 shiftwidth=4 wrapmargin=4 textwidth=79
+au FileType java set tabstop=4 softtabstop=4 shiftwidth=4 wrapmargin=4 textwidth=79
 
 " Map keys
 au FileType task inoremap <silent> <buffer> <C-d> <ESC>:call Toggle_task_status()<CR>i
 au FileType task noremap <silent> <buffer> <C-d> :call Toggle_task_status()<CR>
 
 " Folding
-:map + v%zf
+map + v%zf
 
 vmap > >gv
 vmap < <gv
@@ -43,6 +58,8 @@ vmap <C-k> [egv
 vmap <C-j> ]egv
 
 map <Leader>wr :%s/\s*$//<CR>:noh<CR>
+
+map <Leader>sv :so $MYVIMRC<CR>
 
 " Switch tabs
 map  <A-0> 0gt
