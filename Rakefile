@@ -133,22 +133,17 @@ dotfile_task :git do
   link_file "sources/gitconfig", "~/.gitconfig"
 end
 
-dotfile_task "gnome-terminal" do
-  dir = File.expand_path "~/.gconf/apps/gnome-terminal/profiles/LessDark"
-  sh "mkdir -p #{dir}" unless File.exists? dir
-  link_file "gnome-terminal", File.join(dir, "%gconf.xml")
-end
-
 dotfile_task :tmux do
   link_file "tmux", "~/.tmux"
   link_file "tmux/tmux.conf", "~/.tmux.conf"
 end
 
-%w[byobu mc gemrc].each do |file|
+%w[gemrc].each do |file|
   dotfile_task file do
     link_file file, "~/.#{file}"
   end
 end
 
-task :server => [:bash, :vim, :git, :byobu, :mc, :tmux]
+task :server => [:bash, :vim, :git, :tmux]
 task :mac => [:vim, :git, :tmux]
+
