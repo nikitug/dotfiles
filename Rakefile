@@ -109,12 +109,15 @@ dotfile_task :bash do
 end
 
 dotfile_task :vim do
-  link_file "janus.rake", "~/.janus.rake"
   source "sources/vim", "git://github.com/carlhuda/janus.git"
   link_file "sources/vim", "~/.vim"
   install_source "sources/vim", "rake"
-  link_file "vimrc", "~/.vimrc.local"
-  link_file "gvimrc", "~/.gvimrc.local"
+  link_file "vimrc", "~/.vimrc.after"
+  link_file "gvimrc", "~/.gvimrc.after"
+
+  janus_plugins_dir = "~/.janus"
+  sh "mkdir -p #{janus_plugins_dir}" unless File.exists? janus_plugins_dir
+  source "#{janus_plugins_dir}/task", "git://github.com/samsonw/vim-task.git"
 end
 
 dotfile_task :git do
