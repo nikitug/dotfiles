@@ -16,7 +16,7 @@ set columns=119
 set lines=40
 
 " Color
-color twilight
+color twilight_n
 
 " Load bash init file
 set shell=/bin/bash

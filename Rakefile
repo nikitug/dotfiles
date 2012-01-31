@@ -118,6 +118,7 @@ dotfile_task :vim do
   janus_plugins_dir = "~/.janus"
   sh "mkdir -p #{janus_plugins_dir}" unless File.exists? janus_plugins_dir
   source "#{janus_plugins_dir}/task", "git://github.com/samsonw/vim-task.git"
+  source "#{janus_plugins_dir}/twilight_n.vim", "git://github.com/nikitug/twilight_n.vim.git"
 end
 
 dotfile_task :git do
