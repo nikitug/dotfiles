@@ -29,7 +29,7 @@ map <Leader>sv :so $MYGVIMRC<CR>
   "source ./vim/tabheadings.vim
 "endif
 " Tab headings
-function GuiTabLabel()
+function! GuiTabLabel()
     let label = ''
     let bufnrlist = tabpagebuflist(v:lnum)
 
