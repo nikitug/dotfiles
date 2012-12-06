@@ -1,7 +1,11 @@
 # Install
+
     git clone git://github.com/nikitug/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
     rake
+
 # Update
-Will pull the lates version from repo and update dotfiles:
+
+Pull the lates version from github repo and run:
+
     rake update

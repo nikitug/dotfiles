@@ -88,11 +88,9 @@ end
 
 include DotfilesHelpers
 
-task :default
-
 desc "Update repo"
 task :update do
-  sh "git pull"
+  sh "git pull origin master"
   exec "rake"
 end
 
@@ -138,12 +136,10 @@ dotfile_task :tmux do
   link_file "tmux/tmux.conf", "~/.tmux.conf"
 end
 
-%w[gemrc].each do |file|
+%w[gemrc inputrc].each do |file|
   dotfile_task file do
     link_file file, "~/.#{file}"
   end
 end
 
-task :server => [:bash, :vim, :git, :tmux]
-task :mac => [:vim, :git, :tmux]
-
+task :default => [:git, :tmux, :gemrc, :inputrc]
