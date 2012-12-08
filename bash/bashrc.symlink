@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+export DOTFILES=~/.dotfiles
+export PROJECTS=~/Code
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# enable bash completion in interactive shells
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+  source /etc/bash_completion
+fi
+
+export EDITOR='vim'
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+umask 022
+
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;33'
+export LSCOLORS='Gxfxcxdxdxegedabagacad'
+
+for file in $DOTFILES/**/*.bash; do
+  source $file
+done
+
+# use .localrc for SUPER SECRET CRAP
+if [[ -a ~/.localrc ]]; then
+  source ~/.localrc
+fi
