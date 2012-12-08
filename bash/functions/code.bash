@@ -1,3 +1,14 @@
+#!/bin/bash
+
+function e() {
+  if test "$1" == ""
+  then
+    exec $EDITOR .
+  else
+    exec $EDITOR "$1"
+  fi
+}
+
 function c() {
   dir=$PROJECTS/$1
   [ ! -d $dir ] && mkdir -p $dir
