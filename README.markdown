@@ -8,6 +8,8 @@ Mostly inspired by holman's dotfiles: https://github.com/holman/dotfiles
     cd ~/.dotfiles
     make install
 
+This command will symlink all the `*.symlink` files into your home directory.
+
 ## Update
 
     cd ~/.dotfiles
