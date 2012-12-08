@@ -25,7 +25,7 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;33'
 export LSCOLORS='Gxfxcxdxdxegedabagacad'
 
-for file in $DOTFILES/**/*.bash; do
+for file in $DOTFILES/**/*.bash $DOTFILES/bash/functions/*.bash; do
   source $file
 done
 
