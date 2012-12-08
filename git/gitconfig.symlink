@@ -4,7 +4,6 @@
 [github]
     user = nikitug
     token =
-    protocol = https
 [credential]
     helper = osxkeychain
 [color]
@@ -29,13 +28,15 @@
     excludesfile = ~/.gitignore
     editor = vim
 [alias]
+    promote = !$DOTFILES/bin/git-promote
+    wtf = !$DOTFILES/bin/git-wtf
+    rank-contributers = !$DOTFILES/bin/git-rank-contributers
+    count = !git shortlog -sn
     st = status
     ci = commit
     br = branch
     co = checkout
     df = diff
-    lg = log --stat --summary
-    lgp = log -p
 [branch]
     autosetupmerge = true
 [apply]

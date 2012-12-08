@@ -3,20 +3,20 @@
 function e() {
   if test "$1" == ""
   then
-    exec $EDITOR .
+    $EDITOR .
   else
-    exec $EDITOR "$1"
+    $EDITOR "$1"
   fi
 }
 
 function c() {
-  dir=$PROJECTS/$1
+  dir=$PROJECTS/"$1"
   [ ! -d $dir ] && mkdir -p $dir
   cd $dir
 }
 
 function ce() {
-  c $1
+  c "$1"
   e .
 }
 

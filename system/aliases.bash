@@ -1,17 +1,8 @@
 #!/bin/bash
 
-alias ls='ls -G'
-alias ll='ls -al'
-alias l='ls -l'
-
-if [ $(uname) = "Linux" ]
-then
-  alias ls="ls --color=always"
-fi
-
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 if [ ! -x "$(which tree)" ]
 then
@@ -25,3 +16,13 @@ alias .vim="cd ~/.vim"
 
 alias h="history"
 alias hg="h | grep"
+
+if $(gls &>/dev/null)
+then
+  alias ls="gls -F --color"
+else
+  alias ls="ls -G"
+fi
+
+alias ll="ls -lh"
+alias l="ls -lAh"

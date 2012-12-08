@@ -7,6 +7,8 @@ SYMLINKS = **/*.symlink
 
 install: symlink
 
+bootstrap: osx install
+
 uninstall: unlink
 
 symlink:
@@ -24,4 +26,17 @@ unlink:
 		[ -h $$dotfile ] && rm -f $$dotfile && echo "$(RED)$$dotfile removed$(NO_COLOR)";\
 		[ -f $$dotfile.bak ] && mv $$dotfile.bak $$dotfile && echo "$(GREEN)$$dotfile.bak restored$(NO_COLOR)";\
 	done;\
+	true
+
+osx: homebrew
+
+homebrew:
+	@if [ $$(uname -s) = "Darwin" ]; then\
+		if test ! $$(which brew); then\
+			echo "$(RED)  x You should probably install Homebrew first:$(NO_COLOR)";\
+			echo "$(RED)    https://github.com/mxcl/homebrew/wiki/installation$(NO_COLOR)";\
+			exit 1;\
+		fi;\
+	fi;\
+	brew install grc coreutils;\
 	true
