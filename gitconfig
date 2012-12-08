@@ -2,11 +2,16 @@
     name = Nikita Afanasenko
     email = nikita@afanasenko.name
 [github]
-    user = <%= print "github username: "; STDOUT.flush; puts (name ||= STDIN.gets.chomp); name %>
-    token = <%= print "github token: "; STDOUT.flush; puts (token ||= STDIN.gets.chomp); token %>
-
+    user = nikitug
+    token =
+    protocol = https
+[credential]
+    helper = osxkeychain
 [color]
-    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
 [color "branch"]
     current = yellow reverse
     local = yellow
@@ -20,6 +25,9 @@
     added = yellow
     changed = green
     untracked = cyan
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
 [alias]
     st = status
     ci = commit
@@ -29,4 +37,12 @@
     lg = log --stat --summary
     lgp = log -p
 [branch]
-	autosetupmerge = true
+    autosetupmerge = true
+[apply]
+    whitespace = nowarn
+[mergetool]
+    keepBackup = false
+[difftool]
+    prompt = false
+[help]
+    autocorrect = 1
