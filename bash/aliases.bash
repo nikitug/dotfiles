@@ -24,6 +24,7 @@ fi
 alias f5="source ~/.bashrc"
 
 alias .files="cd $DOTFILES"
+alias .vim="cd ~/.vim"
 
 alias h="history"
 alias hg="h | grep"
