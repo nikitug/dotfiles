@@ -9,9 +9,6 @@ then
   alias ls="ls --color=always"
 fi
 
-alias e="$EDITOR"
-alias q="exit"
-
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'

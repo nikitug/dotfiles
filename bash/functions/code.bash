@@ -1,9 +1,12 @@
 function c() {
-  cd $PROJECTS/$1;
+  dir=$PROJECTS/$1
+  [ ! -d $dir ] && mkdir -p $dir
+  cd $dir
 }
 
 function ce() {
-  e $1;
+  c $1
+  e .
 }
 
 make_dir_complete() {
@@ -18,9 +21,7 @@ make_dir_complete() {
         len=\$((\${#wrkdir} + 2));
         COMPREPLY=( \$(compgen -S/ -d \$wrkdir/\$cur| cut -b \$len-) );
     }"
-    ALIAS="$aliasname () { cd \"$dirname/\$*\"; }"
     eval $FUNC
-    eval $ALIAS
     complete -o nospace -F $prgname $aliasname
 }
 
