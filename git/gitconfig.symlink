@@ -32,6 +32,7 @@
     wtf = !$DOTFILES/bin/git-wtf
     rank-contributers = !$DOTFILES/bin/git-rank-contributers
     count = !git shortlog -sn
+    amend = commit --amend
     st = status
     ci = commit
     br = branch
