@@ -20,7 +20,7 @@ if $(gls &>/dev/null)
 then
   alias ls="gls -F --color"
 else
-  alias ls="ls -G"
+  alias ls="ls --color"
 fi
 
 alias ll="ls -lh"
