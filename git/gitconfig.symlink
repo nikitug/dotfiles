@@ -42,9 +42,15 @@
     autosetupmerge = true
 [apply]
     whitespace = nowarn
-[mergetool]
-    keepBackup = false
 [difftool]
     prompt = false
 [help]
     autocorrect = 1
+[mergetool]
+    keepBackup = false
+[mergetool "vimdiffconflicts"]
+    cmd = $DOTFILES/bin/diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+    trustExitCode = true
+[mergetool "mvimdiffconflicts"]
+    cmd = $DOTFILES/bin/diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
+    trustExitCode = true

@@ -22,6 +22,8 @@ alias gci='git commit --interactive'
 # merge
 alias gm='git merge --no-ff'
 alias gmff='git merge'
+alias gmt='git mergetool -t vimdiffconflicts'
+alias gmtm='git mergetool -t mvimdiffconflicts'
 
 # branch
 alias gb='git branch'
