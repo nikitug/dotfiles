@@ -50,4 +50,4 @@ bind esc:cmd hint
 bind 1:ctrl focus 'iTerm'
 bind 2:ctrl focus 'MacVim'
 bind 3:ctrl focus 'Google Chrome'
-
+bind 4:ctrl focus 'Mail'
