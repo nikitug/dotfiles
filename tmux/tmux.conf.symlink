@@ -6,6 +6,7 @@ set -g set-titles on                                    # enable wm window title
 set -g set-titles-string "#S.#W.tmux"                   # wm window title string (uses statusbar variables)
 
 set -g base-index 1                                     # start window indexing at one instead of zero
+set-window-option -g pane-base-index 1
 
 set -g history-limit 10000                              # scrollback buffer n lines
 
@@ -26,7 +27,7 @@ set -g status-interval 30
 set -g status-left-length 10
 set -g status-right-length 40
 set -g status-left '#[fg=green]#S#[default]'
-set -g status-right "#[fg=white]#[bg=red]#(~/.tmux/statuses/updates_available)#[bg=white]#[fg=black]#(~/.tmux/statuses/uptime)#[bg=yellow]#[fg=black]#(cat /proc/loadavg | cut -d' ' -f1)#[default] #[fg=white]%Y-%m-%d %H:%M#[default]"
+set -g status-right "#[bg=yellow]#[fg=black]#(uptime | grep -o 'load averages:.*' | cut -d' ' -f3)#[default] #[fg=white]%Y-%m-%d %H:%M#[default]"
 
 # Colors  ---------------------------------------------------------------------
 
