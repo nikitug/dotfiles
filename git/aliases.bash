@@ -2,7 +2,7 @@
 
 alias ga='git add'
 alias gs='git status -sb'
-alias grmall="git status | grep 'deleted:' | awk '{print \$3}' | xargs git rm -f"
+alias grmall="git status | grep 'deleted:' | awk '{print \$2}' | xargs git rm -f"
 alias gco='git checkout'
 
 # pull/fetch
