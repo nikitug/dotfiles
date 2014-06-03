@@ -54,3 +54,9 @@
 [mergetool "mvimdiffconflicts"]
     cmd = $DOTFILES/bin/diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
     trustExitCode = true
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/mvimdiff $LOCAL $REMOTE
+	path = 
+[mergetool "sourcetree"]
+	cmd = git mergetool -t mvimdiffconflicts $MERGED
+	trustExitCode = true
