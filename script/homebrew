@@ -7,4 +7,4 @@ then
   exit
 fi
 
-brew install grc coreutils
+brew install grc coreutils htop

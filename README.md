@@ -6,6 +6,7 @@ Mostly inspired by holman's dotfiles: https://github.com/holman/dotfiles
 
     git clone git://github.com/nikitug/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
+    make bootstrap
     make install
 
 This command will symlink all the `*.symlink` files into your home directory.
