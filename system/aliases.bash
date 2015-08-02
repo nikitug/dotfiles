@@ -4,11 +4,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-if $(which tree &>/dev/null)
-then
-  alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-fi
-
 alias f5="source ~/.bashrc"
 
 alias .files="cd $DOTFILES"

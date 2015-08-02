@@ -12,9 +12,7 @@ function e() {
 }
 
 function c() {
-  dir=$PROJECTS/"$1"
-  [ ! -d $dir ] && mkdir -p $dir
-  cd $dir
+  cd $PROJECTS/"$1"
 }
 
 function ce() {
