@@ -32,3 +32,9 @@ done
 if [[ -a ~/.localrc ]]; then
   source ~/.localrc
 fi
+
+export NVM_DIR="/Users/nafanasenko/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+PATH="$PATH:/Users/nafanasenko/.mos/bin"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

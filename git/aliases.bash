@@ -29,6 +29,7 @@ alias gmtm='git mergetool -t mvimdiffconflicts'
 alias gb='git branch'
 alias gba='git branch -a'
 alias gbdel='git branch -D'
+alias gbclean='git branch --merged | command grep -vE "^(\*|\s*master\s*$)" | command xargs -n 1 git branch -d'
 
 # diff
 alias gd='git diff'

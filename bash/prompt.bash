@@ -59,4 +59,4 @@ set_prompt() {
   fi
 }
 
-PROMPT_COMMAND=set_prompt
+PROMPT_COMMAND='set_prompt; store_history'

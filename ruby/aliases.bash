@@ -12,3 +12,5 @@ alias rg='rails g'
 alias rs='rails s'
 alias rc='rails c'
 alias rdbm='rake db:migrate'
+
+alias ctags-ruby='ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)'

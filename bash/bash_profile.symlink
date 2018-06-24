@@ -7,3 +7,8 @@ if [ -n "$BASH_VERSION" ]; then
         source "$HOME/.bashrc"
     fi
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+[[ -s "/Users/nafanasenko/.gvm/scripts/gvm" ]] && source "/Users/nafanasenko/.gvm/scripts/gvm"
