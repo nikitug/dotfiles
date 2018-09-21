@@ -19,11 +19,11 @@ function history_count {
   history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 }
 
-mkdir -p ~/.logs
+mkdir -p ~/.bash-history
 
 function store_history {
   if [ "$(id -u)" -ne 0 ]
   then
-    echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log
+    echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.bash-history/$(date "+%Y-%m-%d").log
   fi
 }

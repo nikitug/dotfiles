@@ -12,13 +12,7 @@ function e() {
 }
 
 function c() {
-  cd $PROJECTS/"$1"
+  cd $CODE/"$1"
 }
 
-function ce() {
-  c "$1"
-  e .
-}
-
-make_dir_complete c $PROJECTS
-make_dir_complete ce $PROJECTS
+make_dir_complete c $CODE

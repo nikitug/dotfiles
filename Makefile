@@ -5,14 +5,10 @@ YELL=\x1b[33;01m
 
 SYMLINKS = **/*.symlink
 
-install: symlink
-
-bootstrap: osx install
-
-uninstall: unlink
+.SILENT: symlink unlink brew brew-check brew-tools brew-fonts
 
 symlink:
-	@for link in $(SYMLINKS); do\
+	for link in $(SYMLINKS); do\
 		dotfile=~/.`echo $$link | sed 's#.*/\([^/]*\).symlink#\1#'`;\
 		[ -f $$dotfile -a ! -h $$dotfile ] && mv $$dotfile $$dotfile.bak && echo "$(YELL)$$dotfile baked up$(NO_COLOR)";\
 		ln -fs `pwd`/$$link $$dotfile;\
@@ -21,22 +17,24 @@ symlink:
 	true
 
 unlink:
-	@for link in $(SYMLINKS); do\
+	for link in $(SYMLINKS); do\
 		dotfile=~/.`echo $$link | sed 's#.*/\([^/]*\).symlink#\1#'`;\
 		[ -h $$dotfile ] && rm -f $$dotfile && echo "$(RED)$$dotfile removed$(NO_COLOR)";\
 		[ -f $$dotfile.bak ] && mv $$dotfile.bak $$dotfile && echo "$(GREEN)$$dotfile.bak restored$(NO_COLOR)";\
 	done;\
 	true
 
-osx: homebrew
+brew: brew-check brew-fonts brew-tools
 
-homebrew:
-	@if [ $$(uname -s) = "Darwin" ]; then\
-		if test ! $$(which brew); then\
-			echo "$(RED)  x You should probably install Homebrew first:$(NO_COLOR)";\
-			echo "$(RED)    https://github.com/mxcl/homebrew/wiki/installation$(NO_COLOR)";\
-			exit 1;\
-		fi;\
-	fi;\
-	brew install grc coreutils;\
-	true
+brew-check:
+	if test ! $$(which brew); then\
+		echo "$(RED)x You should probably install Homebrew first$(NO_COLOR)";\
+		exit 1;\
+	fi
+
+brew-tools:
+	brew install coreutils python python@2 ansible fzf git macvim neovim postgresql rbenv ag tmux
+
+brew-fonts:
+	brew tap homebrew/cask-fonts
+	brew cask install font-hack
