@@ -6,10 +6,7 @@ alias grmall="git status | grep 'deleted:' | awk '{print \$2}' | xargs git rm -f
 alias gco='git checkout'
 
 # pull/fetch
-alias gf='git fetch'
-alias gu='git pull'
-alias gur='git pull --rebase'
-alias guroc='git pull --rebase origin `gb | grep ^* | cut -d" " -f2`'
+alias gu='git up'
 
 # push
 alias gp='git push origin HEAD'
@@ -37,7 +34,7 @@ alias gd1='echo "git diff HEAD";  git diff HEAD'
 alias gd2='echo "git diff HEAD^"; git diff HEAD^'
 
 # log
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr, %C(cyan dim)%cD%C(green no-dim))%Creset' --abbrev-commit --date=relative"
 
 # Git submodule shortcuts
 alias gsa='git submodule add'
