@@ -1,0 +1,9 @@
+#!/bin/bash
+
+script=$HOME/.dotfiles/applescript/notify.applescript
+
+if [[ ! -z "$@" ]]; then
+  echo "'$@'" | xargs $script
+else
+  $script "You've asked to ping you."
+fi

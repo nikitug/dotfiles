@@ -1,0 +1,50 @@
+#!/bin/bash
+
+function _tmux_fzf_attached_session {
+  tmux ls -F "#{?session_attached,#{session_name},}" | grep -v '^$'
+}
+
+function _tmux_fzf_unattached_sessions {
+  tmux ls -F "#{?session_attached,,#{session_last_attached} #{session_name}}" | grep -v '^$' | sort -n | cut -f2 -d' '
+}
+
+function _tmux_fzf_mux_list {
+    ls ~/.config/tmuxinator/ | grep -Eo "^[^.]+"
+}
+
+function _tmux_fzf_mux_unstarted {
+  diff <(_tmux_fzf_mux_list | sort) <(tmux ls -F '#{session_name}' | sort) | grep '^<' | sed 's/^< //'
+}
+
+function _tmux_session_finder {
+  script=$0
+  out=$(
+    {
+      _tmux_fzf_mux_unstarted | while read l; do echo -e "\e[0;90m$l"; done ;
+      _tmux_fzf_attached_session | while read l; do echo -e "\e[0;32m$l"; done ;
+      _tmux_fzf_unattached_sessions ;
+    } | tail -r | \
+      fzf --prompt='session> ' --print-query --ansi --border \
+        --bind="ctrl-n:execute(tmux new-session -d -t '{q}' && tmux switch-client -t '{q}')+abort" \
+        --bind="ctrl-d:execute(tmux kill-session -t '{}' && bash $script)+abort"
+  )
+  count=$(echo "$out" | wc -l)
+  if [ $count -eq 1 ]; then
+    if [ ! -z "$out" ]; then
+      echo new
+      tmux new-session -ds "$out"
+      tmux switch-client -t "$out"
+    fi
+  else
+    session=$(echo "$out" | tail -n1)
+    if tmux has-session -t="$session" 2>/dev/null; then
+      echo has
+      tmux switch-client -t "$session"
+    else
+      echo tmux
+      tmuxinator "$session"
+    fi
+  fi
+}
+
+_tmux_session_finder

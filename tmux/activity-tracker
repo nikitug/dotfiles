@@ -1,0 +1,13 @@
+#!/bin/bash
+
+activity_name=$1
+active_window=$(tmux list-windows -F '#{window_id} #{?window_active,is_active,-}' | grep is_active | cut -f1 -d' ')
+
+while true; do
+  has_activity=$(tmux list-windows -F '#{window_id} #{?window_activity_flag,has_activity,-}' | grep "$active_window" | grep has_activity | cut -f2 -d' ')
+  if [ ! -z "$has_activity" ]; then
+    notify-dialog "$activity_name"
+    exit
+  fi
+  sleep 1
+done

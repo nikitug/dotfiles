@@ -2,3 +2,11 @@
 "\e[B": history-search-forward
 set show-all-if-ambiguous on
 set completion-ignore-case on
+
+# Hacks for IntelliJ IDEA terminal emulation
+"^[f": forward-word
+"^[b": backward-word
+"^[.": insert-last-argument
+"ƒ": forward-word
+"∫": backward-word
+"≥": insert-last-argument

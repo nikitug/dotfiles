@@ -6,11 +6,5 @@ alias bi="bundle install"
 alias bl="bundle list"
 alias bu="bundle update"
 
-# Rails Commands
-alias r='rails'
-alias rg='rails g'
-alias rs='rails s'
-alias rc='rails c'
-alias rdbm='rake db:migrate'
-
+alias rcop='be rubocop $(git ls-files -m | xargs ls -1 2>/dev/null | grep "\.rb$")'
 alias ctags-ruby='ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)'
