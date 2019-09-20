@@ -14,20 +14,18 @@ set -g set-titles-string "#S.#W.tmux"                   # wm window title string
 set -g base-index 1                                     # start window indexing at one instead of zero
 set-window-option -g pane-base-index 1
 
-set -g history-limit 10000                              # scrollback buffer n lines
+set -g history-limit 50000                              # scrollback buffer n lines
 
 set -g bell-action any                                  # listen for activity on all windows
 
 setw -g monitor-activity on                             # Notify if other windows have activity
 set -g visual-activity on                               # Show status message when activity
-
 set -sg escape-time 0
-
 set -g focus-events on
-
 set -g visual-activity off
-
+set-option -g renumber-windows on
 set-option -g detach-on-destroy off
+set -g set-clipboard off
 
 # Statusbar -------------------------------------------------------------------
 
@@ -103,6 +101,10 @@ bind-key e new-window -c ~/.dotfiles nvim ~/.tmux.conf
 
 bind-key C new-session \; command-prompt -I "" "rename-session -- '%%'"
 
+# Empty name by default
+bind-key $ command-prompt -I "" "rename-session -- '%%'"
+bind-key , command-prompt -I "" "rename-window -- '%%'"
+
 # Session management
 bind-key / new-window 'bash  ~/.dotfiles/tmux/session-finder'
 
@@ -130,5 +132,7 @@ set -g @plugin 'laktak/extrakto'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 # CopyPaste fix
 set -g @plugin 'tmux-plugins/tmux-yank'
+# Ctrl-A P
+set -g @plugin 'tmux-plugins/tmux-logging'
 
 run -b '~/.dotfiles/tmux/tpm/tpm'
