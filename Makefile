@@ -34,6 +34,7 @@ brew-check:
 
 brew-tools:
 	brew install coreutils python python@2 ansible fzf git macvim neovim postgresql rbenv ag tmux
+	brew install ansifilter
 
 brew-fonts:
 	brew tap homebrew/cask-fonts

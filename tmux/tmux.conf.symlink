@@ -2,7 +2,9 @@
 
 new-session -s root
 
-# set -g default-terminal "screen-256color"
+set -g default-terminal "screen-256color"
+# tell Tmux that outside terminal supports true color
+set -ga terminal-overrides ",xterm-256color*:Tc"
 
 set-option -g default-command "reattach-to-user-namespace -l bash"
 
@@ -36,7 +38,7 @@ set -g status-interval 30
 set -g status-left-length 30
 set -g status-right-length 40
 set -g status-left '#[fg=green]#S#[default] '
-set -g status-right "#[fg=white]%Y-%m-%d %H:%M#[default] #[fg=default,bold]#h"
+set -g status-right "#[fg=white]%Y-%m-%d %H:%M#[default] #[fg=default,bold]#(bash -lic battery_percentage)%"
 
 # Colors  ---------------------------------------------------------------------
 
@@ -72,6 +74,9 @@ bind-key j select-pane -D
 bind-key k select-pane -U
 bind-key h select-pane -R
 bind-key l select-pane -L
+
+bind-key -n C-S-Left swap-window -t -1\; select-window -t -1
+bind-key -n C-S-Right swap-window -t +1\; select-window -t +1
 
 # Confirm before killing window
 # bind-key k confirm kill-window

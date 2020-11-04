@@ -6,8 +6,12 @@ alias gam="git status | grep 'modified:' | awk '{print \$2}' | xargs git add"
 alias grmall="git status | grep 'deleted:' | awk '{print \$2}' | xargs git rm -f"
 alias gco='git checkout'
 
+alias gamend="git status | grep 'modified:' | awk '{print \$2}' | xargs git add && git amend"
+
 # pull/fetch
-alias gu='git up'
+alias gu='git pull origin --autostash $(git branch --show-current)'
+alias gf='git fetch'
+alias master='gco master'
 
 # push
 alias gp='git push origin HEAD'
@@ -30,19 +34,9 @@ alias gbdel='git branch -D'
 alias gbclean='git branch --merged | command grep -vE "^(\*|\s*master\s*$)" | command xargs -n 1 git branch -d'
 
 # diff
-alias gd='git diff'
+alias gd='git diff --color-words'
 alias gd1='echo "git diff HEAD";  git diff HEAD'
 alias gd2='echo "git diff HEAD^"; git diff HEAD^'
 
 # log
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr, %C(cyan dim)%cD%C(green no-dim))%Creset' --abbrev-commit --date=relative"
-
-# Git submodule shortcuts
-alias gsa='git submodule add'
-alias gsu='git submodule update --init'
-
-# Git svn shortcuts
-alias gsf='git svn fetch'
-alias gsfr='git svn fetch && git svn rebase'
-alias gsdc='git svn dcommit --add-author-from --use-log-author'
-alias gssy='gsfr && gsdc'

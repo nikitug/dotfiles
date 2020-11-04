@@ -38,7 +38,7 @@ window:
   # - none: neither borders nor title bar
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
-  decorations: full
+  decorations: buttonless
 
   # Startup Mode (changes require restart)
   #
@@ -51,6 +51,9 @@ window:
   #   - SimpleFullscreen
   startup_mode: Maximized
 
+  # Allow terminal applications to change Alacritty's window title.
+  dynamic_title: true
+
 scrolling:
   # maximum number of lines in the scrollback buffer. Specifying '0' will
   # disable scrolling.
@@ -60,46 +63,26 @@ scrolling:
   # scrollback is enabled (history > 0).
   multiplier: 3
 
-  # Faux Scrolling
-  #
-  # The `faux_multiplier` setting controls the number of lines the terminal
-  # should scroll when the alternate screen buffer is active. This is used to
-  # allow mouse scrolling for applications like `man`.
-  #
-  # Specifying `0` will disable faux scrolling.
-  faux_multiplier: 3
-
-  # Scroll to the bottom when new text is written to the terminal.
-  auto_scroll: false
-
-# Display tabs using this many cells (changes require restart)
-#
-# Some applications, like Emacs, rely on knowing about the width of a tab. To
-# prevent unexpected behavior in these applications, it's also required to
-# change the `it` value in terminfo when altering this setting.
-#
-tabspaces: 8
-
 # Font configuration (changes require restart)
 font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
   normal:
-    family: "Hack"
+    family: "Hack Nerd Font"
 
   # The bold font face
   bold:
-    family: "Hack"
+    family: "Hack Nerd Font"
     style: Bold
 
   # The italic font face
   italic:
-    family: "Hack"
+    family: "Hack Nerd Font"
     style: "Italic"
 
   # The bold italic font face
   bold_italic:
-    family: "Hack"
+    family: "Hack Nerd Font"
     style: "Bold Italic"
 
   # Point size of the font
@@ -217,7 +200,7 @@ colors:
 #
 # To completely disable the visual bell, set its duration to 0.
 #
-visual_bell:
+bell:
   animation: EaseOutExpo
   color: '0xffffff'
   duration: 0
@@ -230,9 +213,6 @@ selection:
 
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: false
-
-# Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
 
 cursor:
   # Cursor style
@@ -666,12 +646,10 @@ key_bindings:
   # - { key: Down,     mods: Command,   chars: "\x1b[1;2B"                       }
 
   # Tabs switching in Tmux and Vim
-  - { key: RBracket, mods: Command|Shift, chars: "\x1b]"   }
-  - { key: LBracket, mods: Command|Shift, chars: "\x1b["   }
-  - { key: RBracket, mods: Alt,           chars: "\x1b]"   }
-  - { key: LBracket, mods: Alt,           chars: "\x1b["   }
-  - { key: RBracket, mods: Command,       chars: "\x01n"   }
-  - { key: LBracket, mods: Command,       chars: "\x01p"   }
+  - { key: RBracket, mods: Command|Shift, chars: "\x01n"   }
+  - { key: LBracket, mods: Command|Shift, chars: "\x01p"   }
+  - { key: RBracket, mods: Command,       chars: "\x13"   }
+  - { key: LBracket, mods: Command,       chars: "\x11"   }
 
   # Repeat last bash command
   - { key: R,   mods: Control|Command,    chars: "\x1b[A\n" }
