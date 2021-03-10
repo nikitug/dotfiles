@@ -2,8 +2,10 @@
 .svn
 *~
 *.swp
+*.swo
 *.rbc
 tags
 .netrwhist
 /vendor/bundle
 .idea
+.coverage

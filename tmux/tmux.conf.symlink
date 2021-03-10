@@ -16,7 +16,7 @@ set -g set-titles-string "#S.#W.tmux"                   # wm window title string
 set -g base-index 1                                     # start window indexing at one instead of zero
 set-window-option -g pane-base-index 1
 
-set -g history-limit 50000                              # scrollback buffer n lines
+set-option -g history-limit 50000                       # scrollback buffer n lines
 
 set -g bell-action any                                  # listen for activity on all windows
 
@@ -38,7 +38,7 @@ set -g status-interval 30
 set -g status-left-length 30
 set -g status-right-length 40
 set -g status-left '#[fg=green]#S#[default] '
-set -g status-right "#[fg=white]%Y-%m-%d %H:%M#[default] #[fg=default,bold]#(bash -lic battery_percentage)%"
+set -g status-right "#[fg=white]%Y-%m-%d %H:%M"
 
 # Colors  ---------------------------------------------------------------------
 

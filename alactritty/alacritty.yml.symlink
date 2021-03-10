@@ -446,7 +446,7 @@ mouse_bindings:
 key_bindings:
   - { key: Key0,   mods: Command,         action: ResetFontSize    }
   - { key: Equals, mods: Command,         action: IncreaseFontSize }
-  - { key: Add,    mods: Command,         action: IncreaseFontSize }
+  - { key: Plus,   mods: Command,         action: IncreaseFontSize }
   - { key: Minus,  mods: Command,         action: DecreaseFontSize }
   - { key: K,      mods: Command,         action: ClearHistory     }
   - { key: K,      mods: Command,         chars: "\x0c"            }
@@ -652,7 +652,11 @@ key_bindings:
   - { key: LBracket, mods: Command,       chars: "\x11"   }
 
   # Repeat last bash command
-  - { key: R,   mods: Control|Command,    chars: "\x1b[A\n" }
+  - { key: R,    mods: Control|Command,    chars: "\x1b[A\n" }
+  - { key: Key2, mods: Control|Command,    chars: "\x1b[A\x1b[A\n" }
+  - { key: Key3, mods: Control|Command,    chars: "\x1b[A\x1b[A\x1b[A\n" }
+  - { key: Key4, mods: Control|Command,    chars: "\x1b[A\x1b[A\x1b[A\x1b[A\n" }
+  - { key: Key5, mods: Control|Command,    chars: "\x1b[A\x1b[A\x1b[A\x1b[A\x1b[A\n" }
 
   # Shortcuts for Tmux
   - { key: Slash,    mods: Command,       chars: "\x01/"   }
